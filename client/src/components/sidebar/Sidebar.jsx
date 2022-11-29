@@ -1,0 +1,67 @@
+import "./sidebar.css";
+
+import { Users } from "../../dummyData";
+import CloseFriend from "../closeFriend/CloseFriend";
+import RssFeedIcon from '@mui/icons-material/RssFeed';
+import ChatIcon from '@mui/icons-material/Chat';
+import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled';
+import GroupIcon from '@mui/icons-material/Group';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
+import EventIcon from '@mui/icons-material/Event';
+import SchoolIcon from '@mui/icons-material/School';
+
+export default function Sidebar() {
+  return (
+    <div className="sidebar">
+      <div className="sidebarWrapper">
+        <ul className="sidebarList">
+          <li className="sidebarListItem">
+            <RssFeedIcon className="sidebarIcon" style={{"color": "#FFCC00"}}/>
+            <span className="sidebarListItemText">Feed</span>
+          </li>
+          <li className="sidebarListItem">
+            <ChatIcon className="sidebarIcon" style={{"color": "#0000FF"}}/>
+            <span className="sidebarListItemText">Chats</span>
+          </li>
+          <li className="sidebarListItem">
+            <PlayCircleFilledIcon className="sidebarIcon" style={{"color": "#008080"}}/>
+            <span className="sidebarListItemText">Videos</span>
+          </li>
+          <li className="sidebarListItem">
+            <GroupIcon className="sidebarIcon" style={{"color": "#0033FF"}}/>
+            <span className="sidebarListItemText">Groups</span>
+          </li>
+          <li className="sidebarListItem">
+            <BookmarkIcon className="sidebarIcon" style={{"color": "#008000"}}/>
+            <span className="sidebarListItemText">Bookmarks</span>
+          </li>
+          <li className="sidebarListItem">
+            <HelpOutlineIcon className="sidebarIcon" style={{"color": "#000000"}}/>
+            <span className="sidebarListItemText">Questions</span>
+          </li>
+          <li className="sidebarListItem">
+            <WorkOutlineIcon className="sidebarIcon" style={{"color": "#0033FF"}}/>
+            <span className="sidebarListItemText">Jobs</span>
+          </li>
+          <li className="sidebarListItem">
+            <EventIcon className="sidebarIcon" style={{"color": "#0033FF"}}/>
+            <span className="sidebarListItemText">Events</span>
+          </li>
+          <li className="sidebarListItem">
+            <SchoolIcon className="sidebarIcon" style={{"color": "#FF0000"}}/>
+            <span className="sidebarListItemText">Courses</span>
+          </li>
+        </ul>
+        <button className="sidebarButton">Show More</button>
+        <hr className="sidebarHr" />
+        <ul className="sidebarFriendList">
+          {Users.map((u) => (
+            <CloseFriend key={u.id} user={u} />
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
