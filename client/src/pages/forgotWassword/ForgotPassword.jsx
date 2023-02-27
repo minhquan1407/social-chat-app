@@ -1,10 +1,14 @@
+import { CircularProgress } from '@mui/material';
+import { Stack } from '@mui/system';
 import axios from 'axios'
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-// import ".";
+import "./auth.css";
 
 export default function ForgotPassword() {
-    const [email, setEmail] = useState("")
+    const [email, setEmail] = useState("");
+    const [isSuccess, setIsSuccess] = useState(false);
 
     const handleForgotPassword = async () => {
         try {
@@ -16,24 +20,30 @@ export default function ForgotPassword() {
     }
   return (
     <>
-    <div className="login_page">
-      <h2>Forgot Your Password!</h2>
-      <div>
-        <label className="form-label"> Your Email address</label>
-        <input
-          value={email}
-          type="email"
-          placeholder="Email Forgot Your Password!"
-          className="form-control"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div className="login_page__row">
-        <button onClick={() => handleForgotPassword()}>
-          ForgotPassword
+      <div className="login_page">
+        <h2 className="loginLogo">Forgot Your Password!</h2>
+        <div>
+          <label className="loginDesc"> Your Email address: </label>
+          <input
+            value={email}
+            type="email"
+            placeholder="Email Forgot Your Password!"
+            className="loginInputR"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <button className="loginButtonn" onClick={() => handleForgotPassword()}>
+          {isSuccess ? (
+            <Stack sx={{ color: "grey.500" }} spacing={2} direction="row">
+              <CircularProgress color="secondary" />
+            </Stack>
+          ) : (
+            <Link to="/login" style={{ textDecoration: "none" }}>
+             ForgotPassword
+            </Link>
+          )}
         </button>
       </div>
-    </div>
-  </>
-  )
+    </>
+  );
 }

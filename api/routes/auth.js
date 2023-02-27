@@ -20,8 +20,8 @@ router.post("/register", async (req, res) => {
       password: hashedPassword,
     });
 
-    const activation_token = createActivationToken(newUser)
-    const url = `${config.URL_CLIENT}/user/activate/${activation_token}`
+    // const activation_token = createActivationToken(newUser)s
+    // const url = `${config.URL_CLIENT}/user/activate/${activation_token}`
     // sendEmail(newUser.email, url, "Verify email your address");
 
     //save user and respond
@@ -105,15 +105,15 @@ router.post("/reset", auth, async (req, res) => {
 //   return re.test(email);
 // }
 
-const createActivationToken = (payload) => {
-  return jwt.sign(payload.toJSON(), process.env.ACTIVATION_TOKEN_SECRET, {expiresIn: '5m'})
-}
+// const createActivationToken = (payload) => {
+//   return jwt.sign(payload.toJSON(), process.env.ACTIVATION_TOKEN_SECRET, {expiresIn: '5m'})
+// }
 const createAccessToken = (payload) => {
   return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '15m'})
 }
 
-const createRefreshToken = (payload) => {
-  return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '7d'})
-}
+// const createRefreshToken = (payload) => {
+//   return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '7d'})
+// }
 
 module.exports = router;
